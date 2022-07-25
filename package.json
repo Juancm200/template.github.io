@@ -34,6 +34,7 @@
   },
   "type": "module",
   "dependencies": {
-    "dateformat": "^4.5.1"
+    "dateformat": "^4.5.1",
+    "firebase": "^9.9.1"
   }
 }
