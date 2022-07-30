@@ -35,6 +35,7 @@
   "type": "module",
   "dependencies": {
     "dateformat": "^4.5.1",
-    "firebase": "^9.9.1"
+    "firebase": "^9.9.1",
+    "firebase-tools": "^11.4.0"
   }
 }
