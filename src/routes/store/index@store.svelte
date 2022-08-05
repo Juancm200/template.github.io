@@ -1,7 +1,8 @@
 <script context="module">
   import { doc, getDoc } from "firebase/firestore";
   import {db} from "../firebase";
-  export async function load({fetch}) {
+  
+  export async function load() {
 
     const docRef = doc(db, "cities", "SF");
     const docSnap = await getDoc(docRef);
@@ -12,7 +13,6 @@
       // doc.data() will be undefined in this case
       console.log("No such document!");
     }
-
   }
 </script>
 
@@ -25,7 +25,7 @@
 <Section>
   <ThreeByThreeGrid>
     <ul>
-
+      
     </ul>
   </ThreeByThreeGrid>
 </Section>
