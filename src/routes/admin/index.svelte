@@ -9,25 +9,27 @@
 		description: '',
 		createdDate: new Date()
 	};
-
+	// New product handler
 	let products = [];
-
 	const handleSubmit = async () => {
 		await addDoc(collection(db, 'products'), product);
 		console.log('added');
 	};
-
-	onSnapshot(collection(db, 'products'), 
-	(querySnapshot) => {
-		const products = querySnapshot.docs.map((doc) => {
-			return{...doc.data()}
-		});
-		console.log(products);
-	},
-	(err) => {
-		console.log(err);
-	}
+	
+	// Load all products when change occurs.
+	onSnapshot(
+		collection(db, 'products'),
+		(querySnapshot) => {
+			products = [];
+			querySnapshot.docs.map((doc) => {
+				return products.push({ ...doc.data() });
+			});
+		},
+		(error) => {
+			console.log(error);
+		}
 	);
+
 </script>
 
 <!--basic form to add a new product-->
@@ -49,6 +51,20 @@
 		/>
 		<input type="submit" value="Add Product" />
 	</form>
+	
+<!--Show current state of "Products" collection-->
+
+	<div class="prduct">
+		<ul>
+			{#each products as product}
+				<li>
+					<h3>{product.title}</h3>
+					<p>{product.description}</p>
+					<p>{product.price}</p>
+				</li>
+			{/each}
+		</ul>
+	</div>
 </main>
 
 <style></style>
